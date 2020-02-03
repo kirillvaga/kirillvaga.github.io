@@ -39,7 +39,7 @@
   font-size: 14px;
   font-weight: 700;
   font-family: 'Open Sans', sans-serif;
-  color: #ffffff;
+  color: #080808;
 }
 
 .cards {
@@ -71,14 +71,12 @@
 .cards__date {
   text-align: end;
   color: blue;
-  margin-bottom: 48px;
   border-bottom: 2px solid black;
   padding-top: 10px;
 }
 
 .cards__content {
-  white-space: nowrap;
-  overflow: hidden;
+  padding-top: 10px;
   text-overflow: ellipsis;
 }
 

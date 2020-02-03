@@ -36,6 +36,7 @@ const renderPagination = count => {
 
 const renderCards = cards => {
   let wrapper = document.querySelector('.cards__wrapper');
+  let fragment = document.createDocumentFragment();
   wrapper.innerHTML = '';
   cards.forEach(element => {
     let cards = document.createElement('div');
@@ -53,7 +54,8 @@ const renderCards = cards => {
           ${element.description}
         </div>
   `;
-    wrapper.appendChild(cards);
+    fragment.appendChild(cards);
+    wrapper.appendChild(fragment);
   });
 };
 
