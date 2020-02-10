@@ -1,11 +1,16 @@
 import {FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL} from '../const/const'
 
+type actionType = {
+  type: string
+  payload: Object
+}
+
 const initialState = {
   isLoading: false,
   cards:[]
 };
 
-const newsReducer = (state = initialState, action: any) => {
+const newsReducer = (state = initialState, action: actionType) => {
   switch (action.type) {
     case FETCH_NEWS_START:
       return {

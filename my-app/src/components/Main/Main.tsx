@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 import { getNews } from '../../actions/newsAction'
 import CardVue from '../CardVue/CardVue'
 
+
+type elemsType = {
+  isLoading: boolean
+   cards: []
+ }
+
+type stateType = {
+  cards:elemsType
+}
+
 type MainProps = {
   cards: object[],
   isLoading: boolean,
@@ -32,11 +42,11 @@ function Main (props: MainProps) {
   }
 
 export default connect(
-  (state: any) => ({
+  (state: stateType) => ({
     cards: state.cards.cards,
     isLoading: state.cards.isLoading
   }), 
-  (dispatch: any) => ({
+  (dispatch: Function) => ({
     getNews: () => dispatch(getNews())
   })
 )(Main)

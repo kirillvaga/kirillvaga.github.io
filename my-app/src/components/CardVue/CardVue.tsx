@@ -3,8 +3,9 @@ import { Card } from 'antd';
 import '../App/App.css'
 import {WrapperForCard} from './CardVue.style'
 
+
 type CardVue = {
-  key: any;
+  key: number;
   cardVue: any;
 }
 
