@@ -3,13 +3,19 @@ import {Header} from '../Header/Header'
 import Main from '../Main/Main'
 import {FooterSection} from '../Footer/Footer'
 
-const myState = {
+type userNameType = {
+  firstName: string
+  lastName: string
+}
+
+type myStateType = {
+  userName: userNameType;
+}
+
+const myState: myStateType = {
   userName: {
     firstName: 'Kirill',
     lastName: 'Vaha'
-  },
-  userAge: {
-    year: '1997'
   }
 };
 

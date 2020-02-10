@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { getNews } from '../../actions/newsAction'
 import CardVue from '../CardVue/CardVue'
 
 type MainProps = {
-  cards: any,
+  cards: object[],
   isLoading: boolean,
-  getNews: any
+  getNews: Function
 }
 
 function Main (props: MainProps) {
@@ -16,12 +15,13 @@ function Main (props: MainProps) {
     useEffect(() => {
        props.getNews();
     }, []);
+
     return (
       <div>
         {isLoading ?
           (<div>Loading ...</div>)
           :
-          cards.map((card: any, item: number) => (
+          cards.map((card: object, item: number) => (
             <CardVue 
               key = {item}
               cardVue = {card}

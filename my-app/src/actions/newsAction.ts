@@ -1,8 +1,9 @@
 import { ThunkAction } from "redux-thunk";
+import { Action } from 'redux'
 import { URL } from '../API/api'
 import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL} from '../const/const'
 
-export const getNews = (): ThunkAction<any, any, any, any> => dispatch => {
+export const getNews = (): ThunkAction<void, Promise<any>, Action<string>, Action<string>> => dispatch => {
   dispatch({
     type: FETCH_NEWS_START
   });
