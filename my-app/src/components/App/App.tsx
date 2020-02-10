@@ -1,7 +1,7 @@
 import React from 'react';
-import {Header} from '../Header/Header'
+import { Header } from '../Header/Header'
 import Main from '../Main/Main'
-import {FooterSection} from '../Footer/Footer'
+import { FooterSection } from '../Footer/Footer'
 
 const myState = {
   userName: {
@@ -11,5 +11,5 @@ const myState = {
 };
 
 export const App = () => {
-  return (<><Header userInfo={myState.userName} /><Main/><FooterSection/></>);
+  return (<><Header userInfo={myState.userName} /><Main /><FooterSection /></>);
 }

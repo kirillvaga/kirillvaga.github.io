@@ -1,5 +1,5 @@
 import React from 'react';
-import {SectionHeader, UlElement, LiElement, Link, LiCart, Cart} from './Header.style'
+import { SectionHeader, UlElement, LiElement, Link, LiCart, Cart } from './Header.style'
 
 type userInfoType = {
   firstName: string

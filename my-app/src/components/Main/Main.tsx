@@ -6,11 +6,11 @@ import CardVue from '../CardVue/CardVue'
 
 type elemsType = {
   isLoading: boolean
-   cards: []
- }
+  cards: []
+}
 
 type stateType = {
-  cards:elemsType
+  cards: elemsType
 }
 
 type MainProps = {
@@ -19,33 +19,33 @@ type MainProps = {
   getNews: Function
 }
 
-function Main (props: MainProps) {
-    const { cards, isLoading } = props;
+function Main(props: MainProps) {
+  const { cards, isLoading } = props;
 
-    useEffect(() => {
-       props.getNews();
-    }, []);
+  useEffect(() => {
+    props.getNews();
+  }, []);
 
-    return (
-      <div>
-        {isLoading ?
-          (<div>Loading ...</div>)
-          :
-          cards.map((card: object, item: number) => (
-            <CardVue 
-              key = {item}
-              cardVue = {card}
-            />
-          ))}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {isLoading ?
+        (<div>Loading ...</div>)
+        :
+        cards.map((card: object, item: number) => (
+          <CardVue
+            key={item}
+            cardVue={card}
+          />
+        ))}
+    </div>
+  );
+}
 
 export default connect(
   (state: stateType) => ({
     cards: state.cards.cards,
     isLoading: state.cards.isLoading
-  }), 
+  }),
   (dispatch: Function) => ({
     getNews: () => dispatch(getNews())
   })
