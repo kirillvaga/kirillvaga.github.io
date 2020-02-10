@@ -3,15 +3,20 @@ import Header from '../Header/Header'
 import Main from '../Main/Main'
 import FooterSection from '../Footer/Footer'
 
+const myState = {
+  userName: {
+    firstName: 'Kirill',
+    lastName: 'Vaha'
+  },
+  userAge: {
+    year: '1997'
+  }
+};
 
-type AppProps = {
-  userInfo: any;
-}
-
-const App = (props: AppProps) => {
+const App = () => {
   return (
     <div className="App">
-      <Header userInfo={props.userInfo.userName} />
+      <Header userInfo={myState.userName} />
       <Main/>
       <FooterSection/>
     </div>
