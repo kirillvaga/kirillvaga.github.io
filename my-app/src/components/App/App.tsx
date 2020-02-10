@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header'
 import Main from '../Main/Main'
+import FooterSection from '../Footer/Footer'
 
 
 type AppProps = {
@@ -12,6 +13,7 @@ const App = (props: AppProps) => {
     <div className="App">
       <Header userInfo={props.userInfo.userName} />
       <Main/>
+      <FooterSection/>
     </div>
   );
 }
