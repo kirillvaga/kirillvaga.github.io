@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getNews } from '../../actions/newsAction'
 import CardVue from '../CardVue/CardVue'
 
-interface MainProps {
+type MainProps = {
   cards: any,
   isLoading: boolean,
   getNews: any
 }
 
-class Main extends Component<MainProps>{
+function Main (props: MainProps) {
+    const { cards, isLoading } = props;
 
-  componentDidMount() {
-    this.props.getNews();
-  }
-
-  render() {
-    const { cards, isLoading } = this.props;
-    // console.log(cards[0]);
+    useEffect(() => {
+       props.getNews();
+    }, []);
     return (
       <div>
         {isLoading ?
@@ -33,16 +30,14 @@ class Main extends Component<MainProps>{
       </div>
     );
   }
-}
 
-const mapStateToProps = (state: any) => ({
-  cards: state.cards.cards,
-  isLoading: state.cards.isLoading
-})
-
-const mapDispatchToProps = (dispatch: any) => ({
-  getNews: bindActionCreators(getNews, dispatch)
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default connect(
+  (state: any) => ({
+    cards: state.cards.cards,
+    isLoading: state.cards.isLoading
+  }), 
+  (dispatch: any) => ({
+    getNews: () => dispatch(getNews())
+  })
+)(Main)
 

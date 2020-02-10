@@ -1,4 +1,4 @@
-import {FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL} from '../actions/newsAction'
+import {FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL} from '../const/const'
 const initialState = {
   isLoading: false,
   cards:[]

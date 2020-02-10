@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from 'antd';
-import './index.css'
+import '../App/App.css'
+import {WrapperForCard} from './CardVue.style'
 
 type CardVue = {
   key: any;
@@ -9,16 +10,9 @@ type CardVue = {
 
 
 const CardVue = (props: CardVue) => {
-  console.log(props.cardVue);
-  return (
-    <div style={{ background: '#ECECEC', padding: '30px' }}>
-      <Card title={props.cardVue.title} bordered={true}>
-        <p>{props.cardVue.author}</p>
-        <p>{props.cardVue.content}</p>
-        <p>{props.cardVue.publishedAt}</p>
-      </Card>
-    </div>
-  );
+  const { title, author, content, publishedAt} = props.cardVue;
+
+  return (<WrapperForCard><Card title={title} bordered={true}><p>{author}</p><p>{content}</p><p>{publishedAt}</p></Card></WrapperForCard>);
 }
 
 export default CardVue;
