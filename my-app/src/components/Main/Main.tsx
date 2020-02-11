@@ -14,10 +14,22 @@ type StateType = {
 }
 
 type MainProps = {
-  cards: object[];
+  cards: Cardtype[];
   isLoading: boolean;
   getNews: Function;
 }
+
+ export interface Cardtype {
+  source: Object;
+  author: string;
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  content: string;
+}
+
 
 const Main = (props: MainProps) => {
   const { cards, isLoading, getNews } = props;
@@ -31,7 +43,7 @@ const Main = (props: MainProps) => {
       {isLoading ?
         (<div>Loading ...</div>)
         :
-        cards.map((card: any) => (
+        cards.map((card: Cardtype) => (
           <CardVue
             key={card.publishedAt}
             cardVue={card}
