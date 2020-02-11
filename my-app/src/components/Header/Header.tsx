@@ -17,7 +17,7 @@ export const Header = (props: HeaderProps) => {
   return (
     <SectionHeader>
       <UlElement>
-        <LiElement><Link>{firstName}{lastName}</Link></LiElement>
+        <LiElement><Link>{ firstName } { lastName }</Link></LiElement>
         <LiElement><Link>Sign In</Link></LiElement>
         <LiCart>
           <Cart>

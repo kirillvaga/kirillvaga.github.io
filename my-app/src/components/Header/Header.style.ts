@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { Main_color } from '../../const/const'
 
 export const SectionHeader = styled.section`
   width: 100%;
   height: 45px;
-  background-color: #333333;
+  background-color: ${Main_color};
 `;
 
 export const UlElement = styled.ul`
@@ -23,8 +24,7 @@ export const Link = styled.a`
 `;
 
 export const LiCart = styled.li`
-  margin-left: 64px;
-  margin-right: 0px;
+  margin: 0, 0, 0, 64px;
   width: 20%;
   height: 45px;
   background-color: #00c8c8;

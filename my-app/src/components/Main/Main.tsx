@@ -4,13 +4,12 @@ import { getNews } from '../../actions/newsAction'
 import { CardVue } from '../CardVue/CardVue'
 import { WrapperForMain } from './Main.style'
 
-
 type elemsType = {
   isLoading: boolean;
   cards: [];
 }
 
-type stateType = {
+type StateType = {
   cards: elemsType;
 }
 
@@ -20,7 +19,7 @@ type MainProps = {
   getNews: Function;
 }
 
-function Main(props: MainProps) {
+const Main = (props: MainProps) => {
   const { cards, isLoading, getNews } = props;
 
   useEffect(() => {
@@ -32,9 +31,9 @@ function Main(props: MainProps) {
       {isLoading ?
         (<div>Loading ...</div>)
         :
-        cards.map((card: object, item: number) => (
+        cards.map((card: any) => (
           <CardVue
-            key={item}
+            key={card.publishedAt}
             cardVue={card}
           />
         ))}
@@ -43,7 +42,7 @@ function Main(props: MainProps) {
 }
 
 export default connect(
-  (state: stateType) => ({
+  (state: StateType) => ({
     cards: state.cards.cards,
     isLoading: state.cards.isLoading
   }),
