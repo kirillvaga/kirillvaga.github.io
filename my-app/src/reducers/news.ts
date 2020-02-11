@@ -11,7 +11,6 @@ type actionType = {
 
 const initialState = {
   isLoading: false,
-  isError: false,
   cards: []
 };
 
@@ -28,7 +27,7 @@ const newsReducer = (state = initialState, action: actionType) => {
       }
     case FETCH_NEWS_FAIL:
       return {
-        isError: true
+        isLoading: false
       }
     default:
       return state;
