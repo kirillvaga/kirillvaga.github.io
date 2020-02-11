@@ -1,7 +1,7 @@
 import { ThunkAction } from "redux-thunk";
 import { Action } from 'redux'
 import { URL } from '../API/apiConstants'
-import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../const/const'
+import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../const/actionConst'
 
 type responseType = {
   status: string;
@@ -27,7 +27,4 @@ export const getNews = (): ThunkAction<void, Promise<any>, Action<string>, Actio
           payload: { error: Object }
         })
     )
-    .catch ( res => {
-      console.log(res);
-    });
 };

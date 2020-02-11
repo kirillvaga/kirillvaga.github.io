@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Main_color } from '../../const/const'
+import { Main_color } from '../../const/actionConst'
 
 export const SectionHeader = styled.section`
   width: 100%;
