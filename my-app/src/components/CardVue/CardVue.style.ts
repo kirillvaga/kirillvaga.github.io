@@ -10,5 +10,5 @@ export const WrapperForCard = styled.div`
 
 export const CardWithStyle = styled(Card) `
     width: 500px; 
-    max-height:300px;
+    height:300px;
 `;

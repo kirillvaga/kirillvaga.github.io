@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { Action } from 'redux'
-import { URL } from '../API/api'
+import { URL } from '../API/apiConstants'
 import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../const/const'
 
 type responseType = {
@@ -22,10 +22,12 @@ export const getNews = (): ThunkAction<void, Promise<any>, Action<string>, Actio
         payload: response.articles
       }
     ),
-      error =>
-        dispatch({
+      error => dispatch({
           type: FETCH_NEWS_FAIL,
           payload: { error: Object }
         })
-    );
+    )
+    .catch ( res => {
+      console.log(res);
+    });
 };
