@@ -3,7 +3,7 @@ import { Header } from '../Header/Header'
 import Main from '../Main/Main'
 import { FooterSection } from '../Footer/Footer'
 
-const myState = {
+const userData = {
   userName: {
     firstName: 'Kirill',
     lastName: 'Vaha'
@@ -11,5 +11,5 @@ const myState = {
 };
 
 export const App = () => {
-  return (<><Header userInfo={myState.userName} /><Main /><FooterSection /></>);
+  return <><Header userInfo={userData.userName} /><Main /><FooterSection /></>
 }

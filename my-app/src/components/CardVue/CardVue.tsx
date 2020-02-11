@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'antd';
+import {CardWithStyle} from './CardVue.style'
 import '../App/App.css'
 import { WrapperForCard } from './CardVue.style'
 
@@ -10,10 +10,8 @@ type CardVue = {
 }
 
 
-const CardVue = (props: CardVue) => {
+export const CardVue = (props: CardVue) => {
   const { title, author, content, publishedAt } = props.cardVue;
 
-  return (<WrapperForCard><Card title={title} bordered={true}><p>{author}</p><p>{content}</p><p>{publishedAt}</p></Card></WrapperForCard>);
+  return (<WrapperForCard><CardWithStyle title={title} bordered><p>{author}</p><p>{content}</p><p>{publishedAt}</p></CardWithStyle></WrapperForCard>);
 }
-
-export default CardVue;

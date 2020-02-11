@@ -21,7 +21,7 @@ export const Header = (props: HeaderProps) => {
         <LiElement><Link>Sign In</Link></LiElement>
         <LiCart>
           <Cart>
-            empty
+            News
           </Cart>
         </LiCart>
       </UlElement>

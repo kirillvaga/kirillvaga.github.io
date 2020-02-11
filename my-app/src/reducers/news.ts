@@ -1,12 +1,17 @@
 import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../const/const'
 
+type payloadType = {
+  articals: [];
+}
+
 type actionType = {
-  type: string
-  payload: Object
+  type: string;
+  payload: payloadType;
 }
 
 const initialState = {
   isLoading: false,
+  isError: false,
   cards: []
 };
 
@@ -23,7 +28,7 @@ const newsReducer = (state = initialState, action: actionType) => {
       }
     case FETCH_NEWS_FAIL:
       return {
-        isLoading: false
+        isError: true
       }
     default:
       return state;

@@ -4,9 +4,9 @@ import { URL } from '../API/api'
 import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../const/const'
 
 type responseType = {
-  status: string
-  totalResults: number
-  articles: []
+  status: string;
+  totalResults: number;
+  articles: [];
 }
 
 export const getNews = (): ThunkAction<void, Promise<any>, Action<string>, Action<string>> => dispatch => {
@@ -25,7 +25,7 @@ export const getNews = (): ThunkAction<void, Promise<any>, Action<string>, Actio
       error =>
         dispatch({
           type: FETCH_NEWS_FAIL,
-          payload: { error }
+          payload: { error: Object }
         })
     );
 };

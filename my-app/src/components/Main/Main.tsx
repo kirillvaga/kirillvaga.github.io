@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getNews } from '../../actions/newsAction'
-import CardVue from '../CardVue/CardVue'
+import { CardVue } from '../CardVue/CardVue'
+import { WrapperForMain } from './Main.style'
 
 
 type elemsType = {
-  isLoading: boolean
-  cards: []
+  isLoading: boolean;
+  cards: [];
 }
 
 type stateType = {
-  cards: elemsType
+  cards: elemsType;
 }
 
 type MainProps = {
-  cards: object[],
-  isLoading: boolean,
-  getNews: Function
+  cards: object[];
+  isLoading: boolean;
+  getNews: Function;
 }
 
 function Main(props: MainProps) {
@@ -27,7 +28,7 @@ function Main(props: MainProps) {
   }, []);
 
   return (
-    <div>
+    <WrapperForMain>
       {isLoading ?
         (<div>Loading ...</div>)
         :
@@ -37,7 +38,7 @@ function Main(props: MainProps) {
             cardVue={card}
           />
         ))}
-    </div>
+    </WrapperForMain>
   );
 }
 
@@ -46,8 +47,9 @@ export default connect(
     cards: state.cards.cards,
     isLoading: state.cards.isLoading
   }),
-  (dispatch: Function) => ({
-    getNews: () => dispatch(getNews())
-  })
+
+  {
+    getNews: () => getNews()
+  }
 )(Main)
 
