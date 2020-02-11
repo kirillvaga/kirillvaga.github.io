@@ -21,10 +21,10 @@ type MainProps = {
 }
 
 function Main(props: MainProps) {
-  const { cards, isLoading } = props;
+  const { cards, isLoading, getNews } = props;
 
   useEffect(() => {
-    props.getNews();
+    getNews();
   }, []);
 
   return (
