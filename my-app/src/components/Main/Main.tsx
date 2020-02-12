@@ -19,7 +19,7 @@ type MainProps = {
   getNews: Function;
 }
 
- export interface Cardtype {
+export interface Cardtype {
   source: Object;
   author: string;
   title: string;
@@ -33,10 +33,9 @@ type MainProps = {
 
 const Main = (props: MainProps) => {
   const { cards, isLoading, getNews } = props;
-
   useEffect(() => {
     getNews();
-  }, []);
+  }, [getNews]);
 
   return (
     <WrapperForMain>
