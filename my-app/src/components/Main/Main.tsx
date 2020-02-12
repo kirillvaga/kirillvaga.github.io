@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getNews } from '../../actions/newsAction'
 import { CardVue } from '../CardVue/CardVue'
-import { WrapperForMain } from './Main.style'
+import { WrapperForMain, MainSection } from './Main.style'
 import { Pagination } from '../Pagination/Pagination'
 
 type elemsType = {
@@ -51,7 +51,7 @@ const Main = (props: MainProps) => {
   );
 
   return (
-    <div>
+    <MainSection>
       <WrapperForMain>
         { isLoading ?
           (<div>Loading ...</div>)
@@ -65,15 +65,16 @@ const Main = (props: MainProps) => {
           ))}
       </WrapperForMain>
 
-      { cards ?
+      { !isLoading ?
         <Pagination 
           newsPerPage={newsPerPage} 
           totalNews={cards.length} 
-          paginate={paginate} />
+          paginate={paginate}
+           />
         :
         <></>
       }
-    </div>
+    </MainSection>
   );
 }
 

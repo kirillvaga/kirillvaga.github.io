@@ -1,4 +1,5 @@
 import React from 'react';
+import { PaginationWrapper, PaginationElement } from './Pagination.style'
 
 type PaginationType = {
     newsPerPage: number;
@@ -15,14 +16,25 @@ export const Pagination = ({ newsPerPage, totalNews, paginate }: PaginationType)
 
     return (
         <nav>
-            <ul className="pagination">
+            <PaginationWrapper>
                 {pageNumbers.map(number => (
-                    <li key={number} className='page-item'>
-                        <a href="!#" onClick={() => paginate(number)} className='page-link'> {number} </a>
-                    </li>
+                    <PaginationElement key={number} onClick={() => paginate(number)}>
+                        {number}
+                    </PaginationElement>
                 ))}
-            </ul>
-
+            </PaginationWrapper>
         </nav>
+
+
+
+        //     <nav>
+        //     <ul className="pagination">
+        //         {pageNumbers.map(number => (
+        //             <li key={number} className='page-item'>
+        //                 <a href="!#" onClick={() => paginate(number)} className='page-link' style={{ color: '#00c8c8' }}> {number} </a>
+        //             </li>
+        //         ))}
+        //     </ul>
+        // </nav>
     )
 }

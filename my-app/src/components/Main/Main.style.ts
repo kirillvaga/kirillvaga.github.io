@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
 export const WrapperForMain = styled.div`
-    background: #ECECEC;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 100px;
+    width: 88.5%;
+    min-height: calc(100vh - 69px);
+`
+
+export const MainSection = styled.div`
+    background: #ECECEC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
