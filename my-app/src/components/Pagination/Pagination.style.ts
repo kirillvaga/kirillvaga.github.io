@@ -5,9 +5,9 @@ export const PaginationWrapper = styled.div`
     display: flex;
 `
 
-
 export const PaginationElement = styled.div`
     border: 1px solid ${Main_color};
+    border-radius: .25rem;
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -18,6 +18,7 @@ export const PaginationElement = styled.div`
     color: #00c8c8;
     &:hover {
         background: #00c8c8;
+        opacity: 0.5;
         color:  ${Main_color};
     }
-`
+ `

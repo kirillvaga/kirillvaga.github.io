@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getNews } from '../../actions/newsAction'
 import { CardVue } from '../CardVue/CardVue'
 import { WrapperForMain, MainSection } from './Main.style'
-import { Pagination } from '../Pagination/Pagination'
+import { PaginationForCard } from '../Pagination/Pagination'
 
 type elemsType = {
   isLoading: boolean;
@@ -34,16 +34,13 @@ export interface Cardtype {
 
 const Main = (props: MainProps) => {
   const { cards, isLoading, getNews } = props;
-
   const [currentPage, setCurrentPage] = useState(1);
   const [newsPerPage] = useState(4);
 
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currrentNews = cards ? cards.slice(indexOfFirstNews, indexOfLastNews) : cards;
-
-  const paginate = (pageNumber : number) => setCurrentPage(pageNumber);
-
+  const paginate = (pageNumber: number, event: any) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     getNews();
@@ -66,10 +63,11 @@ const Main = (props: MainProps) => {
       </WrapperForMain>
 
       { !isLoading ?
-        <Pagination 
+        <PaginationForCard 
           newsPerPage={newsPerPage} 
           totalNews={cards.length} 
           paginate={paginate}
+          currentPage = {currentPage}
            />
         :
         <></>
@@ -88,4 +86,3 @@ export default connect(
     getNews: () => getNews()
   }
 )(Main)
-
