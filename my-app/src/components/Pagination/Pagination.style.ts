@@ -22,3 +22,4 @@ export const PaginationElement = styled.div`
         color:  ${Main_color};
     }
  `
+ 
