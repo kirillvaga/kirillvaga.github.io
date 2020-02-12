@@ -1,21 +1,15 @@
 import React from 'react';
-import Header from '../Header/Header'
+import { Header } from '../Header/Header'
 import Main from '../Main/Main'
-import FooterSection from '../Footer/Footer'
+import { FooterSection } from '../Footer/Footer'
 
+const userData = {
+  userName: {
+    firstName: 'Kirill',
+    lastName: 'Vaha'
+  }
+};
 
-type AppProps = {
-  userInfo: any;
+export const App = () => {
+  return <><Header userInfo={userData.userName} /><Main /><FooterSection /></>
 }
-
-const App = (props: AppProps) => {
-  return (
-    <div className="App">
-      <Header userInfo={props.userInfo.userName} />
-      <Main/>
-      <FooterSection/>
-    </div>
-  );
-}
-
-export default App;

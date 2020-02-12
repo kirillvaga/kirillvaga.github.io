@@ -1,24 +1,13 @@
 import React from 'react';
-import { Card } from 'antd';
-import './index.css'
+import { CardWithStyle } from './CardVue.style'
+import '../App/App.css'
+import { WrapperForCard } from './CardVue.style'
+import { Cardtype } from '../Main/Main'
 
-type CardVue = {
-  key: any;
-  cardVue: any;
+interface CardVueType {
+  cardVue : Cardtype;
+} 
+
+export const CardVue = ({ cardVue: { title, author, content, publishedAt }}:CardVueType) => {
+  return (<WrapperForCard><CardWithStyle title={title} bordered><p>{author}</p><p>{content}</p><p>{publishedAt}</p></CardWithStyle></WrapperForCard>);
 }
-
-
-const CardVue = (props: CardVue) => {
-  console.log(props.cardVue);
-  return (
-    <div style={{ background: '#ECECEC', padding: '30px' }}>
-      <Card title={props.cardVue.title} bordered={true}>
-        <p>{props.cardVue.author}</p>
-        <p>{props.cardVue.content}</p>
-        <p>{props.cardVue.publishedAt}</p>
-      </Card>
-    </div>
-  );
-}
-
-export default CardVue;

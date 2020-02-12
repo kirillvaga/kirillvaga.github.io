@@ -1,25 +1,30 @@
 import { ThunkAction } from "redux-thunk";
+import { Action } from 'redux'
+import { URL } from '../API/apiConstants'
+import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../const/actionConst'
 
-export const FETCH_NEWS_START = 'FETCH_NEWS_START';
-export const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS';
-export const FETCH_NEWS_FAIL = 'FETCH_NEWS_FAIL';
-export const URL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=251501d9720d4d64aa038e7977116df5';
+type responseType = {
+  status: string;
+  totalResults: number;
+  articles: [];
+}
 
-export const getNews = (): ThunkAction<any, any, any, any> => dispatch => {
+export const getNews = (): ThunkAction<void, Promise<any>, Action<string>, Action<string>> => dispatch => {
   dispatch({
     type: FETCH_NEWS_START
   });
 
-  fetch(URL).then(response => response.json()).then(
-    (response: any) =>
-      dispatch({
+  fetch(URL)
+    .then(response => response.json())
+    .then((response: responseType) => dispatch(
+      {
         type: FETCH_NEWS_SUCCESS,
         payload: response.articles
-      }),
-    error =>
-      dispatch({
-        type: FETCH_NEWS_FAIL,
-        payload: { error }
-      })
-  );
+      }
+    ),
+      error => dispatch({
+          type: FETCH_NEWS_FAIL,
+          payload: { error: Object }
+        })
+    )
 };

@@ -1,48 +1,65 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { getNews } from '../../actions/newsAction'
-import CardVue from '../CardVue/CardVue'
+import { CardVue } from '../CardVue/CardVue'
+import { WrapperForMain } from './Main.style'
 
-interface MainProps {
-  cards: any,
-  isLoading: boolean,
-  getNews: any
+type elemsType = {
+  isLoading: boolean;
+  cards: [];
 }
 
-class Main extends Component<MainProps>{
-
-  componentDidMount() {
-    this.props.getNews();
-  }
-
-  render() {
-    const { cards, isLoading } = this.props;
-    // console.log(cards[0]);
-    return (
-      <div>
-        {isLoading ?
-          (<div>Loading ...</div>)
-          :
-          cards.map((card: any, item: number) => (
-            <CardVue 
-              key = {item}
-              cardVue = {card}
-            />
-          ))}
-      </div>
-    );
-  }
+type StateType = {
+  cards: elemsType;
 }
 
-const mapStateToProps = (state: any) => ({
-  cards: state.cards.cards,
-  isLoading: state.cards.isLoading
-})
+type MainProps = {
+  cards: Cardtype[];
+  isLoading: boolean;
+  getNews: Function;
+}
 
-const mapDispatchToProps = (dispatch: any) => ({
-  getNews: bindActionCreators(getNews, dispatch)
-})
+export interface Cardtype {
+  source: Object;
+  author: string;
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  content: string;
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+
+const Main = (props: MainProps) => {
+  const { cards, isLoading, getNews } = props;
+  useEffect(() => {
+    getNews();
+  }, [getNews]);
+
+  return (
+    <WrapperForMain>
+      {isLoading ?
+        (<div>Loading ...</div>)
+        :
+        cards.map((card: Cardtype) => (
+          <CardVue
+            key={card.publishedAt}
+            cardVue={card}
+          />
+        ))}
+    </WrapperForMain>
+  );
+}
+
+export default connect(
+  (state: StateType) => ({
+    cards: state.cards.cards,
+    isLoading: state.cards.isLoading
+  }),
+
+  {
+    getNews: () => getNews()
+  }
+)(Main)
 
